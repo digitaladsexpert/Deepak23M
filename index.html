@@ -1,91 +1,291 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Deepak Wadhwa</title>
 
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-background:#ececec;
-font-family:Arial,sans-serif;
-text-align:center;
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:80px 15px 30px;
+    overflow-x:hidden;
+
+    background:
+    radial-gradient(circle at top left,#5b21b6 0%,transparent 30%),
+    radial-gradient(circle at bottom right,#0891b2 0%,transparent 30%),
+    linear-gradient(135deg,#020617,#0f172a,#111827);
 }
+
+/* Glow Background */
+
+.orb{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(90px);
+    z-index:-1;
+    animation:floatOrb 10s ease-in-out infinite;
+}
+
+.orb1{
+    width:250px;
+    height:250px;
+    background:#FFD700;
+    top:-80px;
+    left:-80px;
+}
+
+.orb2{
+    width:300px;
+    height:300px;
+    background:#06b6d4;
+    right:-100px;
+    bottom:-100px;
+    animation-delay:3s;
+}
+
+.orb3{
+    width:220px;
+    height:220px;
+    background:#9333ea;
+    top:40%;
+    left:70%;
+    animation-delay:6s;
+}
+
+@keyframes floatOrb{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-30px);
+    }
+}
+
+/* Top Bar */
 
 .top-bar{
-background:#000;
-color:#ff00c8;
-font-size:20px;
-font-weight:700;
-padding:10px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    text-align:center;
+    background:#0B1120;
+    color:#F4D03F;
+    padding:12px;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.3px;
+    z-index:999;
+    box-shadow:0 0 20px rgba(244,208,63,.15);
 }
 
+/* Premium Glass Card */
+
 .container{
-padding:20px 15px 50px;
+    width:100%;
+    max-width:460px;
+    position:relative;
+    text-align:center;
+    color:#F8FAFC;
+
+    padding:35px 25px;
+
+    background:rgba(255,255,255,.07);
+    backdrop-filter:blur(30px);
+
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.55),
+    0 0 40px rgba(244,208,63,.12);
+
+    animation:cardEntry .8s ease;
+}
+
+.container::before{
+    content:"";
+    position:absolute;
+    inset:-1px;
+    border-radius:30px;
+    padding:1px;
+
+    background:linear-gradient(
+    135deg,
+    rgba(244,208,63,.7),
+    rgba(255,255,255,.25),
+    rgba(244,208,63,.4)
+    );
+
+    -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+}
+
+@keyframes cardEntry{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Profile */
+
+.profile-wrap{
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+}
+
+.profile-ring{
+    padding:5px;
+    border-radius:50%;
+    background:conic-gradient(
+        #F4D03F,
+        #fff,
+        #F4D03F,
+        #fff,
+        #F4D03F
+    );
+
+    animation:spin 10s linear infinite;
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
 }
 
 .profile{
-width:130px;
-height:130px;
-border-radius:50%;
-object-fit:cover;
-display:block;
-margin:10px auto 25px;
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #111827;
+
+    box-shadow:
+    0 0 25px rgba(244,208,63,.45),
+    0 0 60px rgba(244,208,63,.20);
 }
 
+/* Text Colors Balanced */
+
 .name{
-font-size:20px;
-font-weight:700;
-color:#000;
-margin-bottom:30px;
-text-shadow:0 8px 10px rgba(0,0,0,.12);
+    font-size:24px;
+    font-weight:800;
+    color:#F4D03F;
+    line-height:1.4;
+    margin-bottom:25px;
+    text-shadow:0 0 12px rgba(244,208,63,.35);
 }
 
 .main-heading{
-font-size:18px;
-font-weight:700;
-line-height:1.4;
-color:#273248;
-margin-bottom:25px;
-text-shadow:0 3px 5px rgba(0,0,0,.15);
+    color:#F8FAFC;
+    font-size:20px;
+    font-weight:700;
+    line-height:1.5;
+    margin-bottom:20px;
 }
 
 .sub-heading{
-font-size:16px;
-font-weight:700;
-line-height:1.5;
-color:#000;
-margin-bottom:20px;
+    color:#CBD5E1;
+    font-size:17px;
+    font-weight:600;
+    line-height:1.6;
+    margin-bottom:18px;
 }
 
 .description{
-font-size:16px;
-font-weight:700;
-line-height:1.5;
-color:#000;
-margin-bottom:35px;
+    color:#E2E8F0;
+    font-size:18px;
+    font-weight:700;
+    line-height:1.6;
+    margin-bottom:35px;
 }
+
+/* CTA Button */
 
 .telegram-btn{
-display:inline-block;
-background:#66cc6d;
-color:#fff;
-text-decoration:none;
-font-size:22px;
-font-weight:700;
-padding:16px 28px;
-border-radius:3px;
+    position:relative;
+    overflow:hidden;
+
+    display:block;
+    width:100%;
+
+    text-decoration:none;
+    padding:18px;
+
+    border-radius:16px;
+
+    font-size:22px;
+    font-weight:800;
+    color:#fff;
+
+    background:linear-gradient(
+    135deg,
+    #22c55e,
+    #16a34a
+    );
+
+    box-shadow:
+    0 0 20px rgba(34,197,94,.45),
+    0 10px 35px rgba(34,197,94,.35);
+
+    transition:.3s;
 }
 
-.telegram-btn:active{
-transform:scale(.98);
+.telegram-btn:hover{
+    transform:translateY(-2px);
+}
+
+.telegram-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.45),
+        transparent
+    );
+
+    animation:shine 2.5s infinite;
+}
+
+@keyframes shine{
+    100%{
+        left:120%;
+    }
+}
+
+.footer{
+    margin-top:25px;
+    color:#94A3B8;
+    font-size:13px;
+    letter-spacing:1px;
 }
 </style>
 
@@ -97,18 +297,20 @@ n.callMethod.apply(n,arguments):n.queue.push(arguments)};
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
 n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
+s.parentNode.insertBefore(t,s)}
+(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+
 fbq('init', '3436057976575419');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=3436057976575419&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-  
+
 </head>
 <body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
 
 <div class="top-bar">
 Don't have Telegram yet? Try it now!
@@ -116,14 +318,18 @@ Don't have Telegram yet? Try it now!
 
 <div class="container">
 
-<img src="deepak.jpeg" class="profile">
+<div class="profile-wrap">
+    <div class="profile-ring">
+        <img src="deepak.jpeg" class="profile" alt="Deepak Wadhwa">
+    </div>
+</div>
 
 <div class="name">
 DEEPAK WADHWA ( SEBI REGISTERED )
 </div>
 
 <div class="main-heading">
-Banknifty, Nifty, Stock Option,Midcap Nifty,Sensex
+Banknifty, Nifty, Stock Option, Midcap Nifty, Sensex
 </div>
 
 <div class="sub-heading">
@@ -135,10 +341,15 @@ India’s best channel for Option Buying In Nifty And Banknifty
 </div>
 
 <a href="https://t.me/+WUQcEoCfZLFkZDU1" class="telegram-btn">
-Join Telegram Channel
+🚀 Join Telegram Channel
 </a>
+
+<div class="footer">
+PREMIUM COMMUNITY ACCESS
+</div>
 
 </div>
 
 </body>
 </html>
+```
