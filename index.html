@@ -5,9 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Deepak Wadhwa - SEBI Registered Advisor</title>
 
-<!-- Premium Fonts -->
+<!-- Speed Optimization: Resource Hints (Preconnect & DNS Prefetch) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://connect.facebook.net">
+<link rel="dns-prefetch" href="https://connect.facebook.net">
+
+<!-- Premium Fonts with display=swap for fast rendering -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -31,7 +35,6 @@ body{
         linear-gradient(180deg, #050505 0%, #121212 100%);
 }
 
-/* Subtle Trading Chart Grid Background */
 body::before{
     content:"";
     position:fixed;
@@ -44,14 +47,13 @@ body::before{
     pointer-events:none;
 }
 
-/* Top Ticker Bar */
 .top-bar{
     position:fixed;
     top:0; left:0; width:100%;
     text-align:center;
     background:#0f0f0f;
     border-bottom:1px solid rgba(212, 175, 55, 0.3);
-    color:#D4AF37; /* Gold */
+    color:#D4AF37;
     padding:12px;
     font-size:13px;
     font-weight:600;
@@ -61,7 +63,6 @@ body::before{
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
-/* Premium Matte Black Card */
 .container{
     width:100%;
     max-width:440px;
@@ -75,15 +76,15 @@ body::before{
     box-shadow: 
         0 20px 50px rgba(0,0,0,0.8), 
         inset 0 1px 0 rgba(255,255,255,0.05);
-    animation:cardEntry 1s cubic-bezier(0.16, 1, 0.3, 1);
+    animation:cardEntry 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
 }
 
 @keyframes cardEntry{
-    from{opacity:0; transform:translateY(30px);}
+    from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
 }
 
-/* Profile Section */
 .profile-wrap{
     display:flex;
     justify-content:center;
@@ -125,6 +126,7 @@ body::before{
     gap:4px;
     text-transform:uppercase;
 }
+
 .live-dot{
     width:6px; height:6px;
     background:white;
@@ -133,7 +135,6 @@ body::before{
 }
 @keyframes blink{ 0%, 100% {opacity:1;} 50% {opacity:0.3;} }
 
-/* Typography */
 .name{
     font-family:'Playfair Display',serif;
     font-size:28px;
@@ -150,7 +151,7 @@ body::before{
     font-weight:600;
     padding:5px 12px;
     border:1px solid rgba(212, 175, 55, 0.5);
-    border-radius:4px; /* Sharp corporate look */
+    border-radius:4px;
     margin-bottom:25px;
     letter-spacing:1px;
     text-transform:uppercase;
@@ -169,7 +170,6 @@ body::before{
 }
 .main-heading b{ color:#fff; font-weight:600; }
 
-/* Stats Section (Corporate Dashboard Look) */
 .stats{
     display:flex;
     justify-content:space-between;
@@ -195,7 +195,6 @@ body::before{
     letter-spacing:0.5px;
 }
 
-/* CTA Button (Premium Gold) */
 .telegram-btn{
     position:relative;
     overflow:hidden;
@@ -203,17 +202,18 @@ body::before{
     width:100%;
     text-decoration:none;
     padding:16px;
-    border-radius:8px; /* Sleek corners */
+    border-radius:8px;
     font-family:'Montserrat',sans-serif;
     font-size:15px;
     font-weight:700;
-    color:#000000; /* Black text on gold */
+    color:#000000;
     background:linear-gradient(135deg, #D4AF37, #F8E9A1, #D4AF37);
     box-shadow:0 10px 30px rgba(212, 175, 55, 0.3);
-    transition:all 0.3s ease;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
     letter-spacing:0.5px;
     text-transform:uppercase;
     animation:goldPulse 2.5s infinite;
+    cursor: pointer;
 }
 
 .telegram-btn:hover{
@@ -254,7 +254,7 @@ body::before{
 }
 </style>
 
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel Code Optimized -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -264,16 +264,19 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window,document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
- fbq('init', '1701844171054333'); 
+fbq('init', '1701844171054333'); 
 fbq('track', 'PageView');
+
+function trackTelegramClick() {
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'Subscribe');
+    }
+}
 </script>
 <noscript>
- <img height="1" width="1" 
-src="https://www.facebook.com/tr?id=1701844171054333&ev=PageView
-&noscript=1"/>
+ <img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1701844171054333&ev=PageView&noscript=1"/>
 </noscript>
-<!-- End Meta Pixel Code -->
-    
 </head>
 <body>
 
@@ -285,7 +288,8 @@ src="https://www.facebook.com/tr?id=1701844171054333&ev=PageView
 
     <div class="profile-wrap">
         <div class="profile-ring">
-            <img src="deepak.jpeg" class="profile" alt="Deepak Wadhwa">
+            <!-- Image Optimization: High Priority & Explicit Width/Height to avoid layout shift -->
+            <img src="deepak.jpeg" class="profile" alt="Deepak Wadhwa" width="130" height="130" fetchpriority="high">
             <div class="live-badge"><div class="live-dot"></div> LIVE</div>
         </div>
     </div>
@@ -298,7 +302,6 @@ src="https://www.facebook.com/tr?id=1701844171054333&ev=PageView
         Calls with proper Technical Analysis directly from a SEBI RA.
     </div>
 
-    <!-- Social Proof Stats -->
     <div class="stats">
         <div class="stat-item">
             <strong>50K+</strong>
@@ -314,7 +317,7 @@ src="https://www.facebook.com/tr?id=1701844171054333&ev=PageView
         </div>
     </div>
 
-    <a href="https://t.me/+WUQcEoCfZLFkZDU1" class="telegram-btn">
+    <a href="https://t.me/+WUQcEoCfZLFkZDU1" onclick="trackTelegramClick()" target="_blank" class="telegram-btn">
         Join Premium Telegram
     </a>
     
